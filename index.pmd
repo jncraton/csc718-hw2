@@ -1,69 +1,33 @@
-Homework 2 OpenMPI Programming Assignments
-------------------------------------------
+% Homework 2 OpenMPI Programming Assignments
+% Jonathan Craton
+% October 27, 2019
 
-Due: Oct 27, 2019 by Midnight
 
-Total: 100 points
+Programming Assignment 1
+========================
 
-Note: For all the programming assignments, you can choose any operating
-systems you want. I will usually provide C/C++ samples for the
-programming assignments. If you prefer to use other languages, e.g.,
-Java, they are accepted too. A README.txt is required to submit any
-programming assignments. In the README.txt, you need to provide the
-following information:
+> (20 points) A prime number is a positive integer evenly divisible by exactly two positive integers: itself and 1. The first five prime numbers are 2, 3, 5, 7, and 11. Sometimes two consecutive odd numbers are both prime. For example, the odd integers following 3, 5, 11 are all prime numbers. Write a sequential program to determine for all integers less than 1,000,000, the number of times that two consecutive odd integers are both prime numbers.
 
-1)  How to compile your program?
+Programming Assignment 2
+========================
 
-2)  How to run your program?
+> (30 points) A prime number is a positive integer evenly divisible by exactly two positive integers: itself and 1. The first five prime numbers are 2, 3, 5, 7, and 11. Sometimes two consecutive odd numbers are both prime. For example, the odd integers following 3, 5, 11 are all prime numbers. Write a parallel program using openMPI to determine for all integers less than 1,000,000, the number of times that two consecutive odd integers are both prime numbers.
 
-3)  What is the average running time of your program?
+Programming Assignment 3
+========================
 
-4)  What are the expected output results when I run your program?
+(30 points) The gap between consecutive prime numbers 2 and 3 is only 1, while the gap between consecutive primes 7 and 11 is 4. Write a parallel program using openMPI to determine, for all integers less than 1,000,000, the largest gap between a pair of consecutive prime numbers.
 
-5)  Any descriptions which may help me to compile, run, and verify your
-    answers. (FYI: I check every programming assignment turned in!)
+Programming Assignment 4
+========================
 
-Zip all you source code, project files, supporting files, and README.txt
-and submit the all-in-one zip file together to the D2L Dropbox. If you
-have any questions about the homework, please let me know.
-
-(20 points) Programming Assignment 1: A prime number is a positive
-integer evenly divisible by exactly two positive integers: itself and 1.
-The first five prime numbers are 2, 3, 5, 7, and 11. Sometimes two
-consecutive odd numbers are both prime. For example, the odd integers
-following 3, 5, 11 are all prime numbers. Write a sequential program to
-determine for all integers less than 1,000,000, the number of times that
-two consecutive odd integers are both prime numbers.
-
-(30 points) Programming Assignment 2: A prime number is a positive
-integer evenly divisible by exactly two positive integers: itself and 1.
-The first five prime numbers are 2, 3, 5, 7, and 11. Sometimes two
-consecutive odd numbers are both prime. For example, the odd integers
-following 3, 5, 11 are all prime numbers. Write a parallel program using
-openMPI to determine for all integers less than 1,000,000, the number of
-times that two consecutive odd integers are both prime numbers.
-
-(30 points) Programming Assignment 3: The gap between consecutive prime
-numbers 2 and 3 is only 1, while the gap between consecutive primes 7
-and 11 is 4. Write a parallel program using openMPI to determine, for
-all integers less than 1,000,000, the largest gap between a pair of
-consecutive prime numbers.
-
-(20 points) Programming Assignment 4: The value of the definite integral
+> (20 points) The value of the definite integral
 
 $$\int_{0}^{1}\frac{4}{1 + x^{2}}\text{dx}$$
 
-is π . We can use numerical integration to compute π by approximating
-the area under the curve. A simple way to do this is called the
-rectangle rule (Figure 4.7). We divide the interval \[0, 1\] into *k*
-subintervals of equal size. We find the height of the curve at the
-midpoint of each of these subintervals. With these heights we can
-construct k rectangles. The area of the rectangles approximates the area
-under the curve. As *k* increases, the accuracy of the estimate also
-increases.
+> is π . We can use numerical integration to compute π by approximating the area under the curve. A simple way to do this is called the rectangle rule (Figure 4.7). We divide the interval \[0, 1\] into *k* subintervals of equal size. We find the height of the curve at the midpoint of each of these subintervals. With these heights we can construct k rectangles. The area of the rectangles approximates the area under the curve. As *k* increases, the accuracy of the estimate also increases.
 
-![](./media/image1.png){width="2.0094346019247595in"
-height="2.853267716535433in"}
+![](./media/image1.png)
 
 A C program that uses the rectangle rule to approximate π appears in
 Figure 4.8. Write a parallel MPI program to computer π using the
@@ -90,3 +54,29 @@ Benchmark running on Rushmore with different number of processors.
   Program4.c                        
 
 
+
+Due: Oct 27, 2019 by Midnight
+
+Total: 100 points
+
+Note: For all the programming assignments, you can choose any operating
+systems you want. I will usually provide C/C++ samples for the
+programming assignments. If you prefer to use other languages, e.g.,
+Java, they are accepted too. A README.txt is required to submit any
+programming assignments. In the README.txt, you need to provide the
+following information:
+
+1)  How to compile your program?
+
+2)  How to run your program?
+
+3)  What is the average running time of your program?
+
+4)  What are the expected output results when I run your program?
+
+5)  Any descriptions which may help me to compile, run, and verify your
+    answers. (FYI: I check every programming assignment turned in!)
+
+Zip all you source code, project files, supporting files, and README.txt
+and submit the all-in-one zip file together to the D2L Dropbox. If you
+have any questions about the homework, please let me know.
