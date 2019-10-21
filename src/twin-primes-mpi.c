@@ -51,7 +51,7 @@ int main (int argc, char *argv[]) {
   if (process_rank == 0) {
     primes = malloc(up_to * sizeof(long));
     for (long i = 1; i <= up_to; i+=2) {
-      primes[i-1] = i;
+      primes[(i-1) / 2] = i;
     }
   }
 
@@ -65,17 +65,22 @@ int main (int argc, char *argv[]) {
     local_primes[i] = is_prime(i);
   }
 
+  MPI_Barrier(MPI_COMM_WORLD);
+
   MPI_Gather(local_primes, primes_per_proc, MPI_LONG,
              primes, primes_per_proc, MPI_LONG, 
              0, MPI_COMM_WORLD);
 
   int count = 0;
+  int prime_count = 0;
   if (process_rank == 0) {
-  
-    for (long i = 1; i < up_to / 2; i++) {
-      //printf("%ld\n", primes[i]);
-      count += (primes[i] && primes[i-1] || primes[i] && primes[i+1]);
+    FILE * primes_txt = fopen("primes.txt", "w");
+    for (long i = 1; i < up_to / 2 ; i++) {
+      fprintf(primes_txt, "%ld %d\n", 1+i*2, !!primes[i]);
+      prime_count += !!primes[i];
+      count += (primes[i] && primes[i-1]);
     }
+    fclose(primes_txt);
   }
 
   elapsed_time += MPI_Wtime();
@@ -83,7 +88,7 @@ int main (int argc, char *argv[]) {
   MPI_Finalize();
 
   if (process_rank == 0) {
-    printf("Counted %d twin primes in %f\n", count, elapsed_time);
+    printf("Counted %d primes and %d twin primes in %f\n", prime_count, count, elapsed_time);
     fflush (stdout);
   }
   
