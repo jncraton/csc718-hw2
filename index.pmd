@@ -36,7 +36,7 @@ Figure 4.8. Write a parallel MPI program to computer π using the
 rectangle rule with 1,000,000 intervals. (Use the virtual cluster
 provided in the class to develop and test the program.)
 
-![](./media/image2.png){width="4.583333333333333in" height="3.8125in"}
+![](./media/image2.png)
 
 Figure 4.8 A C program to compute the value of π using the rectangle
 rule.
