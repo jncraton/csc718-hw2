@@ -13,4 +13,4 @@ prime-gap: prime-gap.c
 	mpirun -n 4 ./prime-gap 1000000
 
 clean:
-	rm -f twin-primes-sequential twin-primes-mpi
+	rm -f twin-primes-sequential twin-primes-mpi prime-gap
