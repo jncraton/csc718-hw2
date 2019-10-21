@@ -74,15 +74,12 @@ int main (int argc, char *argv[]) {
   int count = 0;
   int prime_count = 0;
   if (process_rank == 0) {
-    FILE * primes_txt = fopen("primes.txt", "w");
     for (long i = 0; i < up_to / 2; i++) {
-      fprintf(primes_txt, "%ld %d\n", 1+i*2, !!primes[i]);
       prime_count += !!primes[i];
 
       count += (i > 0 && (primes[i] && primes[i-1])) ||
                (i < up_to/2 && (primes[i] && primes[i+1]));
     }
-    fclose(primes_txt);
   }
 
   elapsed_time += MPI_Wtime();
