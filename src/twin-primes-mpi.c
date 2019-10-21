@@ -17,7 +17,7 @@ int is_prime(long n) {
   and implement.
   */
 
-  for (long test = 2; test < sqrtl(n); test++) {
+  for (long test = 2; test <= sqrtl(n); test++) {
     if (n % test == 0) {
       return 0;
     }

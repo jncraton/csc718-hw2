@@ -13,7 +13,7 @@ int is_prime(long n) {
   and implement.
   */
 
-  for (long test = 2; test < sqrtl(n); test++) {
+  for (long test = 2; test <= sqrtl(n); test++) {
     if (n % test == 0) {
       return 0;
     }
@@ -26,9 +26,11 @@ int main() {
   int last_was_prime = 0;
   int last_was_twin = 0;
   int count = 0;
+  int prime_count = 0;
 
-  for (int i = 3; i < 1000000; i+=2) {
+  for (int i = 1; i < 1000000; i+=2) {
     if (is_prime(i)) {
+      prime_count++;
       if (last_was_prime) {
         count += 1;
         if (!last_was_twin) {
@@ -48,7 +50,7 @@ int main() {
     }
   }
 
-  printf("Found %d twin primes\n", count);
+  printf("Found %d primes and %d twin primes\n", prime_count, count);
 
   return 0;
 }
