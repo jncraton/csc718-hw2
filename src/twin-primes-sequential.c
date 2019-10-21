@@ -3,7 +3,7 @@
 
 #undef show_primes
 
-int is_prime(int n) {
+int is_prime(long n) {
   /* Implements a primality test on n
 
   The algorithm used is to simply test primes for factors using trial 
@@ -13,7 +13,7 @@ int is_prime(int n) {
   and implement.
   */
 
-  for (int test = 2; test < sqrt(n); test++) {
+  for (long test = 2; test < sqrtl(n); test++) {
     if (n % test == 0) {
       return 0;
     }
