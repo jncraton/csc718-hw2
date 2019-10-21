@@ -6,7 +6,8 @@
 int is_prime(int n) {
   /* Implements a primality test on n
 
-  The algorithm used is to simply test primes from 2 to sqrt(n).
+  The algorithm used is to simply test primes for factors using trial 
+  division from 2 to sqrt(n).
 
   There are better algorithms for this, but this is simple to understand
   and implement.
