@@ -55,14 +55,14 @@ int main (int argc, char *argv[]) {
     }
   }
 
-  int * local_primes = malloc(sizeof(long) * primes_per_proc);
+  long * local_primes = malloc(sizeof(long) * primes_per_proc);
 
   MPI_Scatter(primes, primes_per_proc, MPI_LONG,
               local_primes, primes_per_proc, MPI_LONG,
               0, MPI_COMM_WORLD);
 
   for (long i = 0; i < primes_per_proc; i++) {
-    local_primes[i] = is_prime(i);
+    local_primes[i] = is_prime(local_primes[i]);
   }
 
   MPI_Barrier(MPI_COMM_WORLD);
@@ -75,7 +75,7 @@ int main (int argc, char *argv[]) {
   int prime_count = 0;
   if (process_rank == 0) {
     FILE * primes_txt = fopen("primes.txt", "w");
-    for (long i = 1; i < up_to / 2 ; i++) {
+    for (long i = 0; i < up_to / 2 ; i++) {
       fprintf(primes_txt, "%ld %d\n", 1+i*2, !!primes[i]);
       prime_count += !!primes[i];
       count += (primes[i] && primes[i-1]);
