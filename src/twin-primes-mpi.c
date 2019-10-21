@@ -75,10 +75,12 @@ int main (int argc, char *argv[]) {
   int prime_count = 0;
   if (process_rank == 0) {
     FILE * primes_txt = fopen("primes.txt", "w");
-    for (long i = 0; i < up_to / 2 ; i++) {
+    for (long i = 0; i < up_to / 2; i++) {
       fprintf(primes_txt, "%ld %d\n", 1+i*2, !!primes[i]);
       prime_count += !!primes[i];
-      count += (primes[i] && primes[i-1]);
+
+      count += (i > 0 && (primes[i] && primes[i-1])) ||
+               (i < up_to/2 && (primes[i] && primes[i+1]));
     }
     fclose(primes_txt);
   }
