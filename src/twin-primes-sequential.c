@@ -24,19 +24,27 @@ int is_prime(long n) {
 
 int main() {
   int last_was_prime = 0;
+  int last_was_twin = 0;
   int count = 0;
 
   for (int i = 3; i < 1000000; i+=2) {
     if (is_prime(i)) {
       if (last_was_prime) {
         count += 1;
+        if (!last_was_twin) {
+          count += 1;
+        }
         #ifdef show_primes
-          printf("%d and %d\n", i-2, i);
+          printf("%d and %d (count is %d)\n", i-2, i, count);
         #endif
+        last_was_twin = 1;
+      } else {
+        last_was_twin = 0;
       }
       last_was_prime = 1;
     } else {
       last_was_prime = 0;
+      last_was_twin = 0;
     }
   }
 
