@@ -1,7 +1,7 @@
 all: pi twin-primes-sequential twin-primes-mpi prime-gap
 
-local_size=1000000
-remote_size=10000000
+local_size=1200000
+remote_size=12000000
 
 twin-primes-sequential: twin-primes-sequential.c
 	gcc -std=c99 $< -o $@ -lm 
@@ -26,10 +26,10 @@ pi: pi.c
 	scp $< jefferson:~
 	scp $< lincoln:~
 	scp $< roosevelt:~
-	mpirun -n 1 -host washington,jefferson,lincoln,roosevelt ~/$< $remote_size
-	mpirun -n 2 -host washington,jefferson,lincoln,roosevelt ~/$< $remote_size
-	mpirun -n 3 -host washington,jefferson,lincoln,roosevelt ~/$< $remote_size
-	mpirun -n 4 -host washington,jefferson,lincoln,roosevelt ~/$< $remote_size
+	mpirun -n 1 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
+	mpirun -n 2 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
+	mpirun -n 3 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
+	mpirun -n 4 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
 
 clean:
 	rm -f pi twin-primes-sequential twin-primes-mpi prime-gap
