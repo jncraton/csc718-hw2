@@ -2,6 +2,10 @@
 % Jonathan Craton
 % October 27, 2019
 
+All code for these assignments is in the `src` directory. This project is available on GitHub here:
+
+https://github.com/jncraton/csc718-hw2
+
 Programming Assignment 1
 ========================
 
@@ -50,7 +54,7 @@ Running
 
 This can be run by calling `make twin-primes-mpi-run` in the src directory.
 
-If you'd like to run it on Rushmore, this can be done using `make twin-primes-mpi-rushmore`. This should build the program, copy the binaries to the correct systems, and then run it for np={1, 2, 3, and 4}.
+If you'd like to run it on Rushmore, this can be done using `make twin-primes-mpi-run-rushmore`. This should build the program, copy the binaries to the correct systems, and then run it for np={1, 2, 3, and 4}.
 
 Running Time
 ------------
@@ -64,7 +68,9 @@ The program ran on average in ~6 seconds on 4 of the Rushmore systems. Note that
 Expected Output
 ---------------
 
-This program should find 78498 primes up to 1,000,000. It should find 16,338 twin primes.
+This program should find 788060 primes up to 12,000,000. It should find 138,022 twin primes.
+
+Note that this program can be run using an n of 1,000,000 to return the same results as the sequential version.
 
 Algorithm
 ---------
@@ -104,9 +110,7 @@ The program ran on average in ~6 seconds on 4 of the Rushmore systems. Note that
 Expected Output
 ---------------
 
-This program should find 788060 primes up to 12,000,000. It should find 138,022 twin primes.
-
-Note that this program can be run using an n of 1,000,000 to return the same results as the sequential version.
+This program should find 788060 primes up to 12,000,000. It should find a max prime gap of 154. I increase n to be able to measure runtime more accurately. The greatest prime gap up to 1,000,000 is 114.
 
 Programming Assignment 4
 ========================
