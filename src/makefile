@@ -13,8 +13,8 @@ prime-gap: prime-gap.c
 	mpirun -n 4 ./prime-gap 1000000
 
 pi: pi.c
-	gcc $< -o $@ -lm 
-	./$@	
+	mpicc -O -o $@ $< -lm
+	mpirun -n 4 ./pi
 
 clean:
-	rm -f twin-primes-sequential twin-primes-mpi prime-gap
+	rm -f pi twin-primes-sequential twin-primes-mpi prime-gap
