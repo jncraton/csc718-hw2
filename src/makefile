@@ -25,5 +25,15 @@ pi: pi.c
 	mpirun -n 3 ./pi
 	mpirun -n 4 ./pi
 
+%-run-rushmore: %
+	scp $< washington:~
+	scp $< jefferson:~
+	scp $< lincoln:~
+	scp $< roosevelt:~
+	mpirun -n 1 -host washington,jefferson,lincoln,roosevelt ~/$< 10000000
+	mpirun -n 2 -host washington,jefferson,lincoln,roosevelt ~/$< 10000000
+	mpirun -n 3 -host washington,jefferson,lincoln,roosevelt ~/$< 10000000
+	mpirun -n 4 -host washington,jefferson,lincoln,roosevelt ~/$< 10000000
+
 clean:
 	rm -f pi twin-primes-sequential twin-primes-mpi prime-gap
