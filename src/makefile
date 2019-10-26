@@ -1,7 +1,7 @@
 all: pi twin-primes-sequential twin-primes-mpi prime-gap
 
 twin-primes-sequential: twin-primes-sequential.c
-	gcc $< -o $@ -lm 
+	gcc -std=c99 $< -o $@ -lm 
 	./$@
 
 twin-primes-mpi: twin-primes-mpi.c
