@@ -26,10 +26,10 @@ pi: pi.c
 	scp $< jefferson:~
 	scp $< lincoln:~
 	scp $< roosevelt:~
-	mpirun -n 1 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
-	mpirun -n 2 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
-	mpirun -n 3 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
-	mpirun -n 4 -host washington,jefferson,lincoln,roosevelt ~/$< $(remote_size)
+	mpirun -n 1 -host washington,roosevelt,jefferson,lincoln ~/$< $(remote_size)
+	mpirun -n 2 -host washington,roosevelt,jefferson,lincoln ~/$< $(remote_size)
+	mpirun -n 3 -host washington,roosevelt,jefferson,lincoln ~/$< $(remote_size)
+	mpirun -n 4 -host washington,roosevelt,jefferson,lincoln ~/$< $(remote_size)
 
 clean:
 	rm -f pi twin-primes-sequential twin-primes-mpi prime-gap

@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <mpi.h>
-#define INTERVALS 100000000
 
 int main(int argc, char* argv[])
 {
@@ -11,26 +11,33 @@ int main(int argc, char* argv[])
   MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
   MPI_Barrier(MPI_COMM_WORLD);
 
+  long INTERVALS = 60 * atol(argv[1]);
+
+  if (process_rank == 0) {
+    printf("Calculating pi using %ld intervals and %d processes\n", INTERVALS, num_processes);
+    fflush(stdout);
+  }
+
   double elapsed_time = -MPI_Wtime();
 
-	double area;	/* The final anser */
-	double ysum;	/* Sum of rectangle heights */
-	double xi;	/* Midpoint of interval */
-	int i;	
+  double area;  /* The final anser */
+  double ysum;  /* Sum of rectangle heights */
+  double xi;  /* Midpoint of interval */
+  int i;  
 
-	ysum = 0.0;
+  ysum = 0.0;
 
-	int process_intervals = INTERVALS / num_processes;
-	int process_start = process_rank * process_intervals;
-	int process_end = (process_rank + 1) * process_intervals;
+  int process_intervals = INTERVALS / num_processes;
+  int process_start = process_rank * process_intervals;
+  int process_end = (process_rank + 1) * process_intervals;
 
-	for (i=process_start; i < process_end; i++)
-	{
-		xi=((1.0/INTERVALS)*(i+0.5));
-		ysum+=4.0/(1.0+xi*xi);
-	}
+  for (i=process_start; i < process_end; i++)
+  {
+    xi=((1.0/INTERVALS)*(i+0.5));
+    ysum+=4.0/(1.0+xi*xi);
+  }
 
-	double global_sum;
+  double global_sum;
 
   MPI_Reduce(&ysum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
            
@@ -39,8 +46,8 @@ int main(int argc, char* argv[])
   MPI_Finalize();
 
   if (process_rank == 0) {
-  	area = global_sum * (1.0/INTERVALS);
-  	printf("Calculated pi as %13.11f in %f\n", area, elapsed_time);
+    area = global_sum * (1.0/INTERVALS);
+    printf("Calculated pi as %13.11f in %f\n", area, elapsed_time);
     fflush (stdout);
   }
   
