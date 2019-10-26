@@ -9,6 +9,28 @@ Programming Assignment 1
 
 The source code for this can be found in `src/twin-primes-sequential.c`.
 
+![Running twin primes sequential](media/twin-primes-sequential-run.gif)
+
+Compiling
+---------
+
+This can be compiled using `make twin-primes-sequential` in the src directory.
+
+Running
+-------
+
+This can be run by calling `./twin-primes-sequential` in the src directory.
+
+Running Time
+------------
+
+The program ran on average in ~0.65 seconds on one of the Rushmore systems.
+
+Expected Output
+---------------
+
+This program should find 78498 primes up to 1,000,000. It should find 16,338 twin primes.
+
 Programming Assignment 2
 ========================
 
