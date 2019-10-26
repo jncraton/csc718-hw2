@@ -13,7 +13,7 @@ revealjs:
 	mv reveal.js-3.8.0 revealjs
 	rm reveal.zip
 
-$(SRC).pmd: readme.txt
+$(SRC).pmd: readme.md
 	cp $< $@
 
 $(SRC)-md2html.html: $(SRC).pmd
