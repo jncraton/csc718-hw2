@@ -13,9 +13,6 @@ revealjs:
 	mv reveal.js-3.8.0 revealjs
 	rm reveal.zip
 
-$(SRC).pmd: readme.md
-	cp $< $@
-
 $(SRC)-md2html.html: $(SRC).pmd
 	pweave --format=md2html $(SRC).pmd
 	# Hack to remove padding from first line of code blocks
