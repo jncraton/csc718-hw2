@@ -35,15 +35,16 @@ $$\int_{0}^{1}\frac{4}{1 + x^{2}}\text{dx}$$
 
 ![](./media/image1.png)
 
-A C program that uses the rectangle rule to approximate π appears in
+> A C program that uses the rectangle rule to approximate π appears in
 Figure 4.8. Write a parallel MPI program to computer π using the
 rectangle rule with 1,000,000 intervals. (Use the virtual cluster
 provided in the class to develop and test the program.)
 
-![](./media/image2.png)
+![Figure 4.8 A C program to compute the value of π using the rectangle
+rule.](./media/image2.png)
 
-Figure 4.8 A C program to compute the value of π using the rectangle
-rule.
+
+
 
 For each programming assignment, you need to write the code, and run it
 on Rushmore to get the running time for the following number of
